@@ -9,4 +9,8 @@ import { PlacesService } from '../../services';
 export class MapScreenComponent {
 
   private placesService = inject(PlacesService)
+
+  get isUserLocationReady(){
+    return this.placesService.isUserLocationReady
+  }
 }

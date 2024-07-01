@@ -1,1 +1,6 @@
-<p>map-screen works!</p>
+<maps-loading *ngIf="!isUserLocationReady; else mapReady"></maps-loading>
+
+<ng-template #mapReady>
+  <!-- si esto se muestra es porque no tenemos aun la geo localización de la persona -->
+  <maps-map-view></maps-map-view>
+</ng-template>
