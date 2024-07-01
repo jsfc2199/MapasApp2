@@ -26,4 +26,11 @@ export class SearchResultsComponent {
     this.mapServices.flyTo([lng, lat])
     this.selectedId = place.id
   }
+
+  getDirections(place: Feature){
+    const start = this.placesService.userLocation!
+    const end = place.geometry.coordinates as [number, number]
+
+    this.mapServices.getRouteBetweenPoints(start, end)
+  }
 }
