@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { PlacesService } from '../../services';
+import { MapService, PlacesService } from '../../services';
 
 @Component({
   selector: 'app-btn-my-location',
@@ -9,7 +9,12 @@ import { PlacesService } from '../../services';
 export class BtnMyLocationComponent {
 
   private placesService = inject(PlacesService)
+  private mapService = inject(MapService)
+
   goToMyLocation(){
-    
+    if(!this.placesService.isUserLocationReady) throw Error('No hay ubicación del usuario')
+    if(!this.mapService.isMapReady) throw Error('No hay mapa cargado')
+
+    this.mapService.flyTo(this.placesService.userLocation!)
   }
 }
