@@ -62,7 +62,7 @@ export class PlacesService {
         console.log(res)
         this.isLoadingPlaces = false;
         this.places = res.features
-        this.mapsService.createMarkesFromPlaces(this.places)
+        this.mapsService.createMarkesFromPlaces(this.places, this.userLocation!)
       })
   }
 }
