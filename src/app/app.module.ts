@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapsModule } from './maps/maps.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,12 @@ import { MapsModule } from './maps/maps.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MapsModule
+    MapsModule,
+
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
