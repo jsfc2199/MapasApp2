@@ -65,4 +65,8 @@ export class PlacesService {
         this.mapsService.createMarkesFromPlaces(this.places, this.userLocation!)
       })
   }
+
+  deletePlaces(){
+    this.places = []
+  }
 }

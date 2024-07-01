@@ -28,6 +28,7 @@ export class SearchResultsComponent {
   }
 
   getDirections(place: Feature){
+    this.placesService.deletePlaces() //para ocultar la barra al encontrar direcciones
     const start = this.placesService.userLocation!
     const end = place.geometry.coordinates as [number, number]
 
