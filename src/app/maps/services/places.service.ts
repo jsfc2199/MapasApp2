@@ -44,6 +44,12 @@ export class PlacesService {
   }
 
   getPlacesByQuery(query: string = ''){
+    if(query.length === 0){
+      this.isLoadingPlaces = false;
+      this.places = []
+      return
+    }
+    
     this.isLoadingPlaces = true;
     this.placesApi.get<Places>(`?q=${query}`, {
       params: {

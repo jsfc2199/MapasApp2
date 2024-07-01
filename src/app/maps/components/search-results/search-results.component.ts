@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MapService, PlacesService } from '../../services';
+import { Feature } from '../../interfaces/places.interface';
 
 @Component({
   selector: 'app-search-results',
@@ -7,4 +9,21 @@ import { Component } from '@angular/core';
 })
 export class SearchResultsComponent {
 
+  private placesService = inject(PlacesService)
+  private mapServices = inject(MapService)
+  public selectedId: string = ''
+
+  get isLadingPlaces (){
+    return this.placesService.isLoadingPlaces
+  }
+
+  get places(){
+    return this.placesService.places
+  }
+
+  flyTo(place:Feature){
+    const[lng, lat] = place.geometry.coordinates
+    this.mapServices.flyTo([lng, lat])
+    this.selectedId = place.id
+  }
 }
